@@ -1,5 +1,9 @@
 #include <iostream>
-#include <sys/io.h>
+#ifdef WIN32
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
 #include <string.h>
 #include <map>
 #include "Test.h"
