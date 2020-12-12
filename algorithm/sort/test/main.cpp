@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sys/io.h>
+#include <string.h>
 #include <map>
 #include "Test.h"
 #include "../src/MySort.h"
