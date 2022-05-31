@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakelists.txt",
+      "projectTarget": "dll-dll-export.exe",
+      "name": "dll-dll-export.exe",
+      "env": {
+        "PATH": "${cmake.buildRoot}\\external\\dll-parent;${cmake.buildRoot}\\external\\dll-parent\\external\\dll-sub;"
+      }
+    }
+  ]
+}
