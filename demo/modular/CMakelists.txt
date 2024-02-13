@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+project(modular LANGUAGES CXX)
+
+add_subdirectory("libs/lib1")
+add_subdirectory("libs/lib2")
+add_subdirectory("libs/lib3")
+
+add_executable(${PROJECT_NAME} "src/main.cpp")
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}::lib2 ${PROJECT_NAME}::lib3)
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
