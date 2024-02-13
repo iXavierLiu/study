@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+
+# set env variables
+set("_PARRENT_PROJECT_NAME" ${PROJECT_NAME})
+set("_CURRENT_PROJECT_NAME" lib2)
+set("_PARRENT_NAMESPACE" ${_PARRENT_PROJECT_NAME})
+set("_PROJECT_NAMESPACE" ${_PARRENT_NAMESPACE}::${_CURRENT_PROJECT_NAME})
+
+
+project(${_PARRENT_PROJECT_NAME}_${_CURRENT_PROJECT_NAME} LANGUAGES CXX)
+
+
+# setup project
+aux_source_directory("src" _SRC)
+add_library(${PROJECT_NAME} ${_SRC})
+add_library(${_PROJECT_NAMESPACE} ALIAS ${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC "include")
+
+# dependencies
+target_link_libraries(${PROJECT_NAME} PUBLIC ${_PARRENT_NAMESPACE}::lib1)
