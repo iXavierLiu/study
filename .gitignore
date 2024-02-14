@@ -1,4 +1,5 @@
-**/build/*
 !.gitkeep
 **/out/
 **/.vs/
+
+/CMakeUserPresets.json

@@ -1,0 +1,4 @@
+_setup_project_env("practices")
+project(${_PROJECT_NAME} LANGUAGES CXX)
+
+add_subdirectory("leetcode")

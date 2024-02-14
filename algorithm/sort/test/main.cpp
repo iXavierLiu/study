@@ -1,5 +1,10 @@
 #include <iostream>
+#ifdef WIN32
 #include <io.h>
+#else
+#include <unistd.h>
+#endif
+#include <string.h>
 #include <map>
 #include "Test.h"
 #include "../src/MySort.h"
@@ -19,7 +24,7 @@ std::map<const char*, bool(*)(int*arr, unsigned int len)> funPtrMap =
 int testCase(std::pair<const char*, bool(*)(int*arr, unsigned int len)> funPtrPair, const int data[], const unsigned int size)
 {
 	double timeUse;
-	//ÓÃÓÚÅÅĞòÁÙÊ±µÄ±äÁ¿
+	//ç”¨äºæ’åºä¸´æ—¶çš„å˜é‡
 	int* tmp = (int*)malloc(sizeof(int)*size);
 	memcpy(tmp, data, sizeof(int)*size);
 
@@ -41,10 +46,10 @@ int main(int argc, char*argv[])
 	unsigned int readSize = MAX_SIZE;
 	int* readData = (int*)malloc(sizeof(int)*readSize);
 
-	// ÎÄ¼ş²»´æÔÚ
+	// æ–‡ä»¶ä¸å­˜åœ¨
 	if (access("testData.txt", 0) != 0)
 	{
-		// Éú³É²¢±£´æ
+		// ç”Ÿæˆå¹¶ä¿å­˜
 		std::cout << "generating " << readSize << " pieces of data." << std::endl;
 		Test::generateData(readData, readSize);
 		std::cout << "generate complete." << std::endl;
@@ -52,7 +57,7 @@ int main(int argc, char*argv[])
 	}
 	else
 	{
-		// ¼ÓÔØÎÄ¼ş
+		// åŠ è½½æ–‡ä»¶
 		std::cout << "reading file." << std::endl;
 		Test::readFile("testData.txt", readData, readSize, MAX_SIZE);
 		std::cout << "read " << readSize << " pieces of data complete." << std::endl;

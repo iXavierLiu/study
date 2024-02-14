@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+
+include("cmake/general.cmake")
+
+_setup_project_env("study")
+project(${_PROJECT_NAME} LANGUAGES CXX)
+
+add_subdirectory("practices")
+
+#set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+#set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
