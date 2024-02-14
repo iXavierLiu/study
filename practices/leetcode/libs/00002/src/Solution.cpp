@@ -1,41 +1,55 @@
 #include "Solution.h"
 
+void deleteNodes(ListNode* n)
+{
+	ListNode* t;
+	while (n)
+	{
+		t = n;
+		n = n->next;
+		delete t;
+	}
+}
+
 ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2)
 {
-	// code is not finished
-
+	// 开头填充0
 	ListNode* ans = new ListNode(0);
-	ListNode* last = ans;
 	ListNode* firstNotZero = NULL;
-	int carry = 0;
+	ListNode* last = ans;
+	int v1, v2;
+	for (; l1 || l2; l1 && (l1 = l1->next), l2 && (l2 = l2->next), last = last->next)
+	{
+		v1 = l1 ? l1->val : 0;
+		v2 = l2 ? l2->val : 0;
+		last->next = new ListNode(v1 + v2);
+	}
 
-	auto digitAdd = [&](int& a, int& b) {
-		int digitSum = a + b;
-		if (carry) ++digitSum;
-		last->next = new ListNode(digitSum % 10);
-		if (digitSum > 9)
+	for (auto i = ans->next; i; i = i->next)
+	{
+		if (i->val > 9)
 		{
-			carry = 1;
-			firstNotZero = last->next;
+			i->val -= 10;
+			if (!i->next)
+				i->next = new ListNode(1);
+			else
+				++i->next->val;
 		}
-		else
-		{
-			carry = 0;
-			if (!digitSum) firstNotZero = last;
-		}
-	};
-
-	for (; l1->next && l2->next; l1 = l1->next, l2 = l2->next, last = last->next) digitAdd(l1->val, l2->val);
-
-	for (; l1->next; l1 = l1->next) digitAdd(l1->val, carry);
-
-	for (; l2->next; l2 = l2->next) digitAdd(l2->val, carry);
-
-	if (!last->val)
-		for (auto it = firstNotZero->next, next = it->next; it != NULL; it = next, next = it->next) delete it;
-
-	firstNotZero->next = NULL;
-	last = ans->next;
-	delete ans;
-	return last;
+		if (i->val) firstNotZero = i;
+	}
+	// 全0
+	if (!firstNotZero)
+	{
+		deleteNodes(ans->next);
+		ans->next = 0;
+		return ans;
+	}
+	// 删除尾导0
+	deleteNodes(firstNotZero->next);
+	firstNotZero->next = 0;
+	// 删除开头填充0
+	auto t = ans;
+	ans = ans->next;
+	delete t;
+	return ans;
 }
