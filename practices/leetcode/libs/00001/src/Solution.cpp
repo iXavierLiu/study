@@ -1,4 +1,5 @@
 #include "Solution.h"
+#include <algorithm>
 
 #include <map>
 
