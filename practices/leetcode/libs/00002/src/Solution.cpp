@@ -15,7 +15,7 @@ ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2)
 {
 	// 开头填充0
 	ListNode* ans = new ListNode(0);
-	ListNode* firstNotZero = NULL;
+	ListNode* firstNotZero = nullptr;
 	ListNode* last = ans;
 	int v1, v2;
 	for (; l1 || l2; l1 && (l1 = l1->next), l2 && (l2 = l2->next), last = last->next)
