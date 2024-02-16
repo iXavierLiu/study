@@ -35,7 +35,7 @@ protected:
 		while (ln)
 		{
 			auto p = ln->next;
-			delete ln->next;
+			delete ln;
 			ln = p;
 		}
 	}

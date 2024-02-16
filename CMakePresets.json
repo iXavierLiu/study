@@ -20,6 +20,13 @@
                 "CMAKE_C_COMPILER": "/usr/bin/clang",
                 "CMAKE_CXX_COMPILER": "/usr/bin/clang++"
             }
+        },
+        {
+            "name": "windows",
+            "inherits": [
+                "default"
+            ],
+            "generator": "Ninja"
         }
     ]
 }

@@ -1,19 +1,21 @@
 #include "Solution.h"
+#include <algorithm>
+
+#include <map>
 
 vector<int> Solution::twoSum(vector<int>& nums, int target)
 {
-	vector<int> ans;
+	map<int, int> addends;
 	for (int i = 0; i < nums.size(); ++i)
 	{
-		for (auto it = nums.begin() + i + 1;; ++it)
-		{
-			it = find(it, nums.end(), target - nums[i]);
-			if (it == nums.end()) break;
-			auto index = distance(nums.begin(), it);
-			if (find(ans.begin(), ans.end(), index) != ans.end()) continue;
-			ans.push_back(i);
-			ans.push_back(index);
-		}
+		const int& addend = nums[i];
+
+		// try to check if it is paired, then return indexes
+		decltype(addends)::iterator it = addends.find(addend);
+		if (it != addends.end()) return { it->second, i };
+
+		// calc addend paired, then add it to `addends` list
+		addends.insert(decltype(addends)::value_type(target - addend, i));
 	}
-	return ans;
+	return {};
 }
