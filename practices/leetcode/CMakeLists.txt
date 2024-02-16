@@ -15,7 +15,8 @@ function(_add_subdirectories _SUBDIRECOTRY)
 
     #add sources
     aux_source_directory("${_SUBDIRECOTRY}/src" "_SUB_SRC")
-    add_library(${PROJECT_NAME} OBJECT ${_SUB_SRC} "${_SUBDIRECOTRY}/tests/main.cpp")
+    aux_source_directory("${_SUBDIRECOTRY}/tests" "_SUB_TESTS")
+    add_library(${PROJECT_NAME} OBJECT ${_SUB_SRC} ${_SUB_TESTS})
     add_library(${_PROJECT_NAMESPACE} ALIAS ${PROJECT_NAME})
     target_include_directories(${PROJECT_NAME} PUBLIC "${_SUBDIRECOTRY}/src")
     target_link_libraries(${PROJECT_NAME} PUBLIC GTest::gtest GTest::gtest_main GTest::gmock)
