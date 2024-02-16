@@ -23,3 +23,7 @@ TEST_F(NO_00003, 2)
 {
 	ASSERT_EQ(solution.lengthOfLongestSubstring("pwwkew"), 3);
 }
+TEST_F(NO_00003, 3)
+{
+	ASSERT_EQ(solution.lengthOfLongestSubstring("dvdf"), 3);
+}

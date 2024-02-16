@@ -1,42 +1,71 @@
 #include "Solution.h"
 
 #include <set>
+
 int Solution::lengthOfLongestSubstring(string s)
 {
-	set<char> alpha;
-	size_t result = 0;
-	auto it = s.begin();
-	auto end = it;
-	while (end != s.end())
-	{
-		if (alpha.end() == alpha.find(*end))
-		{
-			alpha.insert(*end);
-			++end;
-			continue;
-		}
-		result = result > alpha.size() ? result : alpha.size();
+	return lengthOfLongestSubstring_recurse(s);
+}
+/*
+ * mark: 1/5
+ * 无循环递归分割
+ */
+int Solution::lengthOfLongestSubstring_recurse(string s, size_t mark)
+{
+	if (s.size() <= 1) return s.size() + mark;
 
-		alpha.erase(*it++);
-	}
-	return result > alpha.size() ? result : alpha.size();
+	auto pos = s.find(s.front(), 1);
+	if (string::npos == pos) return lengthOfLongestSubstring_recurse(s.substr(1), 1 + mark);
+
+	return max(lengthOfLongestSubstring_recurse(s.substr(0, pos), mark), lengthOfLongestSubstring_recurse(s.substr(1)));
 }
 
-int Solution::lengthOfLongestSubstring_0(string s)
+/*
+ * mark: 4/5
+ * nomal的改进，单循环头尾指针递进
+ */
+int Solution::lengthOfLongestSubstring_dblPointer(string s)
 {
 	set<char> alpha;
 	size_t result = 0;
-	for (string::iterator it = s.begin(); it != s.end(); ++it)
-	{
-		auto end = it;
-		alpha.clear();
-		for (string::iterator c = it; c != s.end(); ++c)
-		{
-			if (alpha.end() != alpha.find(*c)) break;
 
-			alpha.insert(*c);
+	string::iterator left = s.begin();
+	string::iterator right = left;
+
+	while (right != s.end())
+	{
+		if (alpha.end() == alpha.find(*right))
+		{
+			alpha.insert(*right);
+			++right;
+			continue;
 		}
-		result = result > alpha.size() ? result : alpha.size();
+		result = max(result, alpha.size());
+
+		alpha.erase(*left++);
+	}
+	return max(result, alpha.size());
+}
+
+/*
+ * mark: 2/5
+ * 基本方法，双循环
+ */
+int Solution::lengthOfLongestSubstring_nomal(string s)
+{
+	set<char> alpha;
+	size_t result = 0;
+
+	for (string::iterator left = s.begin(); left != s.end(); ++left)
+	{
+		alpha.clear();
+		for (string::iterator right = left; right != s.end(); ++right)
+		{
+			if (alpha.end() != alpha.find(*right)) break;
+
+			alpha.insert(*right);
+		}
+		result = max(result, alpha.size());
 	}
 
 	return result;
