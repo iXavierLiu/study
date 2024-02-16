@@ -9,6 +9,15 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
             }
+        },
+        {
+            "name": "windows-local",
+            "inherits": [
+                "windows"
+            ],
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
         }
     ]
 }

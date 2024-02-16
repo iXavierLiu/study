@@ -18,7 +18,7 @@ function(_add_subdirectories _SUBDIRECOTRY)
     add_library(${PROJECT_NAME} OBJECT ${_SUB_SRC} "${_SUBDIRECOTRY}/tests/main.cpp")
     add_library(${_PROJECT_NAMESPACE} ALIAS ${PROJECT_NAME})
     target_include_directories(${PROJECT_NAME} PUBLIC "${_SUBDIRECOTRY}/src")
-    target_link_libraries(${PROJECT_NAME} PUBLIC GTest::gtest GTest::gmock)
+    target_link_libraries(${PROJECT_NAME} PUBLIC GTest::gtest GTest::gtest_main GTest::gmock)
 
     # set properties
     set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
@@ -49,4 +49,4 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ${_LIBS})
 # for gtest
 add_executable(${PROJECT_NAME}_tests ${_OBJS})
 add_executable(${_PROJECT_NAMESPACE}::tests ALIAS ${PROJECT_NAME}_tests)
-target_link_libraries(${PROJECT_NAME}_tests PRIVATE ${_LIBS} GTest::gtest_main)
+target_link_libraries(${PROJECT_NAME}_tests PRIVATE ${_LIBS})
