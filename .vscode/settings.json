@@ -1,6 +1,5 @@
 {
     "cmake.useCMakePresets": "always",
-    "files.associations": {
-        "vector": "cpp"
-    }
+    "cmake.configureOnEdit":true,
+    "cmake.configureOnOpen": true
 }
