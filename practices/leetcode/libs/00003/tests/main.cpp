@@ -8,22 +8,27 @@ using namespace ::testing;
 class NO_00003 : public testing::Test
 {
 protected:
+	void Check(std::string&& s, size_t answer)
+	{
+		ASSERT_EQ(solution.lengthOfLongestSubstring(s), answer);
+	}
+
 	Solution solution;
 };
 
 TEST_F(NO_00003, 0)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("abcabcbb"), 3);
+	Check("abcabcbb", 3);
 }
 TEST_F(NO_00003, 1)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("bbbbb"), 1);
+	Check("bbbbb", 1);
 }
 TEST_F(NO_00003, 2)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("pwwkew"), 3);
+	Check("pwwkew", 3);
 }
 TEST_F(NO_00003, 3)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("dvdf"), 3);
+	Check("dvdf", 3);
 }
