@@ -1,10 +1,17 @@
 #pragma once
 
-extern "C" __declspec(dllexport) void dll_sub_c(int argc, char* argv[]);
+#if !defined(_DLL_PARENT_API) && defined(_WIN32)
+#define _DLL_PARENT_API __declspec(dllexport)
+#else
+#define _DLL_PARENT_API
+#endif  //  !defined(_DLL_PARENT_API) && defined(_WIN32)
 
-class __declspec(dllexport) dll_sub_cpp {
+extern "C" _DLL_PARENT_API void dll_sub_c(int argc, char* argv[]);
+
+class _DLL_PARENT_API dll_sub_cpp
+{
 public:
-	static void fun(int argc, char* argv[]);
+    static void fun(int argc, char* argv[]);
 };
 
-extern "C" __declspec(dllexport) void test(int argc, char* argv[]);
+extern "C" _DLL_PARENT_API void test(int argc, char* argv[]);

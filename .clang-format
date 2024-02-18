@@ -3,7 +3,7 @@ BasedOnStyle: Google
 IndentWidth: 4
 TabWidth: 4
 AccessModifierOffset: -4
-UseTab: true
+UseTab: false
 ColumnLimit: 180
 
 BreakBeforeBraces: Custom

@@ -8,18 +8,29 @@ using namespace ::testing;
 class NO_00003 : public testing::Test
 {
 protected:
-	Solution solution;
+    void Check(std::string&& s, size_t answer)
+    {
+        ASSERT_EQ(solution.lengthOfLongestSubstring_nomal(s), answer) << s;
+        ASSERT_EQ(solution.lengthOfLongestSubstring_dblPointer(s), answer) << s;
+        ASSERT_EQ(solution.lengthOfLongestSubstring_recurse(s), answer) << s;
+    }
+
+    Solution solution;
 };
 
 TEST_F(NO_00003, 0)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("abcabcbb"), 3);
+    Check("abcabcbb", 3);
 }
 TEST_F(NO_00003, 1)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("bbbbb"), 1);
+    Check("bbbbb", 1);
 }
 TEST_F(NO_00003, 2)
 {
-	ASSERT_EQ(solution.lengthOfLongestSubstring("pwwkew"), 3);
+    Check("pwwkew", 3);
+}
+TEST_F(NO_00003, 3)
+{
+    Check("dvdf", 3);
 }

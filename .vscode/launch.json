@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "gdb 启动",
+            "name": "lldb 调试",
             "type": "cppdbg",
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
@@ -15,6 +15,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ]
 }

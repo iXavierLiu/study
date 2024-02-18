@@ -1,0 +1,5 @@
+_setup_project_env("research")
+project(${_PROJECT_NAME} LANGUAGES CXX)
+
+add_subdirectory("dll-dll-export")
+add_subdirectory("dll-lib-export")

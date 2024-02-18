@@ -1,14 +1,12 @@
-cmake_minimum_required (VERSION 3.13)
-
-# project name
-project ("dll-parent")
+_setup_project_env("dll-parent")
+project(${_PROJECT_NAME} LANGUAGES CXX)
 
 # build target
 add_library(${PROJECT_NAME} SHARED "include/dll-parent.h" "src/dll-parent.cpp")
 
 # add dependent library
 add_subdirectory("external/dll-sub")
-target_link_libraries(${PROJECT_NAME} PUBLIC dll-sub)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_dll-sub)
 
 # add include directory
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -17,4 +15,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 # set symbols exports flag
-target_compile_definitions(${PROJECT_NAME} PRIVATE DLL_SUB_EXPORTS)
+target_compile_definitions(${PROJECT_NAME} PRIVATE DLL_PARENT_EXPORTS)
+
+install(TARGETS ${PROJECT_NAME})

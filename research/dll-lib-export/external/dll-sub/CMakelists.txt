@@ -1,14 +1,12 @@
-cmake_minimum_required (VERSION 3.13)
-
-# project name
-project ("dll-sub")
+_setup_project_env("dll-sub")
+project(${_PROJECT_NAME} LANGUAGES CXX)
 
 # build target
 add_library(${PROJECT_NAME} SHARED "include/dll-sub.h" "src/dll-sub.cpp")
 
 # add dependent library
 add_subdirectory("external/lib-sub")
-target_link_libraries(${PROJECT_NAME} PRIVATE lib-sub)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_lib-sub)
 
 # add include directory
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -19,3 +17,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 # set symbols exports flag
 target_compile_definitions(${PROJECT_NAME} PRIVATE LIB_SUB_EXPORTS)
 
+install(TARGETS ${PROJECT_NAME})

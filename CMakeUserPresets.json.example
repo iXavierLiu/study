@@ -1,23 +1,23 @@
 {
-    "version": 2,
-    "configurePresets": [
-        {
-            "name": "osx-local",
-            "inherits": [
-                "osx"
-            ],
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
-            }
-        },
-        {
-            "name": "windows-local",
-            "inherits": [
-                "windows"
-            ],
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
-            }
-        }
-    ]
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "osx-local",
+      "inherits": [
+        "osx"
+      ],
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "windows-local",
+      "inherits": [
+        "windows"
+      ],
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    }
+  ]
 }
