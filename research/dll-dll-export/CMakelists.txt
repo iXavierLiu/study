@@ -7,3 +7,5 @@ add_executable(${PROJECT_NAME} "main.cpp")
 # add dependent library
 add_subdirectory("external/dll-parent")
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_dll-parent)
+
+install(TARGETS ${PROJECT_NAME})
