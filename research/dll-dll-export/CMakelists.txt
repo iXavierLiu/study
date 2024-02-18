@@ -1,11 +1,9 @@
-cmake_minimum_required (VERSION 3.10)
-
-# project name
-project("dll-dll-export")
+_setup_project_env("dll-dll-export")
+project(${_PROJECT_NAME} LANGUAGES CXX)
 
 # build target
 add_executable(${PROJECT_NAME} "main.cpp")
 
 # add dependent library
 add_subdirectory("external/dll-parent")
-target_link_libraries(${PROJECT_NAME} PRIVATE dll-parent)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_dll-parent)

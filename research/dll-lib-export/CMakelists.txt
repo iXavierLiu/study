@@ -1,7 +1,5 @@
-cmake_minimum_required (VERSION 3.13)
-
-# project name
-project ("dll-lib-export")
+_setup_project_env("dll-lib-export")
+project(${_PROJECT_NAME} LANGUAGES CXX)
 
 # build target
 add_executable(${PROJECT_NAME} "main.cpp")
