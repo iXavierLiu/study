@@ -5,6 +5,13 @@ include("cmake/general.cmake")
 _setup_project_env("study")
 project(${_PROJECT_NAME} LANGUAGES CXX)
 
+# set runtime search path on unix-like system
+if (UNIX AND NOT APPLE)
+    set(CMAKE_INSTALL_RPATH "$ORIGIN/../${CMAKE_INSTALL_LIBDIR}")
+elseif (APPLE)
+    set(CMAKE_INSTALL_RPATH "@loader_path/../lib")
+endif()
+
 add_subdirectory("practices")
 add_subdirectory("research")
 
