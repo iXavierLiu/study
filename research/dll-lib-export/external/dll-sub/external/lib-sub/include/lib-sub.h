@@ -1,20 +1,14 @@
 #pragma once
 
-#ifndef _SYMBOL_DIRECTION
-#ifdef LIB_SUB_EXPORTS
-#define _SYMBOL_DIRECTION dllexport
+#if !defined(_LIB_SUB_API) && defined(_WIN32)
+#if defined(LIB_SUB_EXPORTS)
+#define _LIB_SUB_API __declspec(dllexport)
 #else
-#define _SYMBOL_DIRECTION dllimport
-#endif  // LIB_SUB_EXPORTS
-#endif  //_SYMBOL_DIRECTION
-
-#ifndef _LIB_SUB_API
-#ifdef _WIN32
-#define _LIB_SUB_API __declspec(_SYMBOL_DIRECTION)
-#elif defined __APPLE__ || defined __GNUC__
-#define _LIB_SUB_API __attribute__((_SYMBOL_DIRECTION))
+#define _LIB_SUB_API __declspec(dllimport)
+#endif  // defined(LIB_SUB_EXPORTS)
+#else
+#define _LIB_SUB_API
 #endif  //  _WIN32
-#endif  // _LIB_SUB_API
 
 extern "C" _LIB_SUB_API void lib_sub_c(int argc, char* argv[]);
 

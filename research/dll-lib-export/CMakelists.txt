@@ -6,4 +6,6 @@ add_executable(${PROJECT_NAME} "main.cpp")
 
 # add dependent library
 add_subdirectory("external/dll-sub")
-target_link_libraries(${PROJECT_NAME} PRIVATE dll-sub)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_dll-sub)
+
+install(TARGETS ${PROJECT_NAME})
