@@ -23,18 +23,7 @@ private:
         }
         std::cout << "+" << std::endl;
     }
-    static void _dump_block(size_t offset, size_t size)
-    {
-        std::cout << std::setw(offset * 2) << ""
-                  << "|";
 
-        for (size_t i = 0; i < size; i++)
-        {
-            std::cout << "* ";
-        }
-
-        std::cout << '\b';
-    }
     static void _dump_left()
     {
         std::cout << std::setw(size_pointer + 1) << "";
@@ -74,25 +63,44 @@ void Utils::dump()
 
     // output body
     auto it = membersInfo.begin();
-    for (size_t i = 0; i < sizeof(T); i += width)
+
+    std::stringstream typeString;
+    for (size_t pos = 0; pos < sizeof(T); pos++)
     {
-        _dump_control(width);
-
-        // dump block
-        _dump_left(i);
-
-        size_t linePos = 0;
-        std::stringstream infoString;
-        while (it != membersInfo.end() && it->addr < i + width)
+        if (pos % width == 0)
         {
-            _dump_block(it->addr - i - linePos, it->size);
-            linePos += it->size;
-            infoString << it->type << "(" << it->size << ") ";
-            it++;
+            std::cout << " " << typeString.str() << std::endl;
+            _dump_control(width);
+            _dump_left(pos);
+
+            typeString.str("");
         }
 
-        std::cout << "|" << std::setw((width - linePos) * 2 + 1) << "" << infoString.str() << std::endl;
+        if (pos > it->addr + it->size - 1) ++it;
+        if (it == membersInfo.end())
+        {
+            std::cout << "  ";
+            continue;
+        }
+
+        if (pos > it->addr)
+        {
+            std::cout << "* ";
+            if (pos == it->addr + it->size - 1) std::cout << "\b|";
+        }
+        else if (pos == it->addr)
+        {
+            if (pos % width != 0) std::cout << "\b";
+            std::cout << "|* ";
+            if (it->size == 1) std::cout << "\b|";
+            typeString << it->type << "(" << it->size << ") ";
+        }
+        else
+        {
+            std::cout << "  ";
+        }
     }
+    std::cout << " " << typeString.str() << std::endl;
 
     _dump_control(width);
     std::cout << std::endl;
