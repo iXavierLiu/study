@@ -1,0 +1,12 @@
+_setup_project_env("data-struct-alignment")
+project(${_PROJECT_NAME} LANGUAGES CXX)
+
+find_package(Boost REQUIRED)
+    #target_link_libraries(main PRIVATE Boost::boost Boost::<lib1> Boost::<lib2> ...)
+
+# build target
+add_executable(${PROJECT_NAME} "main.cpp" "Utils.hpp")
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::boost)
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)

@@ -3,3 +3,4 @@ project(${_PROJECT_NAME} LANGUAGES CXX)
 
 add_subdirectory("dll-dll-export")
 add_subdirectory("dll-lib-export")
+add_subdirectory("data-struct-alignment")
