@@ -26,12 +26,12 @@ private:
 
     static void _dump_left()
     {
-        std::cout << std::setw(size_pointer + 1) << "";
+        std::cout << "  " << std::setw(size_pointer + 1) << "";
     }
 
     static void _dump_left(size_t p)
     {
-        std::cout << std::setw(size_pointer) << std::setfill('0') << p << std::setfill(' ') << " ";
+        std::cout << "0x" << std::setw(size_pointer) << std::setfill('0') << p << std::setfill(' ') << " ";
     }
 };
 
@@ -59,7 +59,9 @@ void Utils::dump()
     membersInfo.begin()->addr = 0;
 
     // output header
-    std::cout << std::setw(size_pointer + 1) << "" << boost::typeindex::type_id_runtime(T{}).pretty_name() << "(" << width << ")" << std::endl;
+    _dump_left();
+    std::cout << boost::typeindex::type_id_runtime(T{}).pretty_name() << "(" << width << ")"
+              << " is " << sizeof(T) << " byte(s)" << std::endl;
 
     // output body
     auto it = membersInfo.begin();
@@ -69,7 +71,7 @@ void Utils::dump()
     {
         if (pos % width == 0)
         {
-            std::cout << " " << typeString.str() << std::endl;
+            if (pos) std::cout << " " << typeString.str() << std::endl;
             _dump_control(width);
             _dump_left(pos);
 
