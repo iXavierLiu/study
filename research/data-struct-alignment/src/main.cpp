@@ -153,9 +153,16 @@ int main(int argc, char const* argv[])
 
     std::cout << std::endl << std::endl << "Other types: \nTYPE(SIZE): ALIGNMENT\n----------" << std::endl;
     TYPE_OUTPUT(size_t);
-    TYPE_OUTPUT(size_t);
-    TYPE_OUTPUT(size_t);
-    TYPE_OUTPUT(size_t);
+    TYPE_OUTPUT(bool);
+    TYPE_OUTPUT(int);
+    TYPE_OUTPUT(short);
+    TYPE_OUTPUT(long);
+    TYPE_OUTPUT(long long);
+    TYPE_OUTPUT(float);
+    TYPE_OUTPUT(double);
+    TYPE_OUTPUT(long double);
+    TYPE_OUTPUT(char);
+    TYPE_OUTPUT(wchar_t);
     TYPE_OUTPUT(ptrdiff_t);
     TYPE_OUTPUT(nullptr_t);
     TYPE_OUTPUT(max_align_t);
