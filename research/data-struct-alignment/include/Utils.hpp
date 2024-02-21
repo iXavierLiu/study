@@ -1,6 +1,7 @@
 #pragma once
 #include <boost/pfr.hpp>
 #include <boost/type_index.hpp>
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <sstream>

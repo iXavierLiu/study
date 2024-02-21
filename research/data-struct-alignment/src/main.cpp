@@ -74,14 +74,16 @@ int main(int argc, char const* argv[])
     // https://developer.apple.com/library/archive/documentation/Porting/Conceptual/PortingUnix/compiling/compiling.html#//apple_ref/doc/uid/TP40002850-SW13
     // https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros?view=msvc-170
     // https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
+
 #ifdef _MSC_VER
+    MACRO_OUTPUT(_MSC_FULL_VER);
+    MACRO_OUTPUT(_MSVC_LANG);
 #ifdef _WIN64
     MACRO_OUTPUT(_WIN64);
 #else
     MACRO_OUTPUT(_WIN32);
-#endif
-    MACRO_OUTPUT(_MSC_VER);
-#endif
+#endif  //_WIN64
+#endif  //_MSC_VER
 
 #ifdef __APPLE__
     MACRO_OUTPUT(__APPLE__);
@@ -100,7 +102,10 @@ int main(int argc, char const* argv[])
 #endif
 
     MACRO_OUTPUT(__cplusplus);
+
+#ifdef __VERSION__
     MACRO_OUTPUT(__VERSION__);
+#endif
 
     std::cout << std::endl << std::endl << "Fixed width integer types: \nTYPE(SIZE): ALIGNMENT\n----------" << std::endl;
     TYPE_OUTPUT(int8_t);
