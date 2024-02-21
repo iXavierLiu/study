@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "windows",
+      "name": "win",
       "inherits": [
         "default"
       ],
