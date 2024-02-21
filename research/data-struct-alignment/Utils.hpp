@@ -87,6 +87,7 @@ void Utils::dump()
 
         if (pos > it->addr)
         {
+            if (pos % width == 0) std::cout << " ";
             std::cout << "* ";
             if (pos == it->addr + it->size - 1) std::cout << "\b|";
         }
