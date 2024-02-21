@@ -14,6 +14,7 @@ public:
 
 private:
     static size_t size_pointer;
+
     static void _dump_control(size_t width)
     {
         _dump_left();
@@ -41,27 +42,34 @@ template <typename T>
 void Utils::dump()
 {
     size_t width = alignof(T);
+
     struct MemberInfo
     {
         size_t addr;
         size_t size;
+        size_t align;
         std::string type;
     };
 
     // get members info
     std::vector<MemberInfo> membersInfo;
     boost::pfr::for_each_field(T{}, [&membersInfo](auto& fields, size_t idx) {
-        membersInfo.emplace_back(MemberInfo{ (size_t)&fields, sizeof(fields), boost::typeindex::type_id_runtime(fields).pretty_name() });
+        membersInfo.emplace_back(MemberInfo{ (size_t)&fields, sizeof(fields), alignof(decltype(fields)), boost::typeindex::type_id_runtime(fields).pretty_name() });
     });
-
-    // set all info address begin from 0
-    std::for_each(membersInfo.begin() + 1, membersInfo.end(), [&membersInfo](auto& item) { item.addr -= membersInfo.begin()->addr; });
-    membersInfo.begin()->addr = 0;
 
     // output header
     _dump_left();
-    std::cout << boost::typeindex::type_id_runtime(T{}).pretty_name() << "(" << width << ")"
-              << " is " << sizeof(T) << " byte(s)" << std::endl;
+    std::cout << boost::typeindex::type_id_runtime(T{}).pretty_name() << "(" << sizeof(T) << ", " << width << ")" << std::endl;
+
+    // set all info address begin from 0
+    if (!membersInfo.size())
+    {
+        std::cout << std::endl;
+        return;
+    }
+
+    std::for_each(membersInfo.begin() + 1, membersInfo.end(), [&membersInfo](auto& item) { item.addr -= membersInfo.begin()->addr; });
+    membersInfo.begin()->addr = 0;
 
     // output body
     auto it = membersInfo.begin();
@@ -96,7 +104,7 @@ void Utils::dump()
             if (pos % width != 0) std::cout << "\b";
             std::cout << "|* ";
             if (it->size == 1) std::cout << "\b|";
-            typeString << it->type << "(" << it->size << ") ";
+            typeString << it->type << "(" << it->size << ", " << it->align << ") ";
         }
         else
         {
