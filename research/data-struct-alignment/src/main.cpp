@@ -107,7 +107,7 @@ int main(int argc, char const* argv[])
     MACRO_OUTPUT(__VERSION__);
 #endif
 
-    std::cout << std::endl << std::endl << "Fixed width integer types: \nTYPE(SIZE): ALIGNMENT\n----------" << std::endl;
+    std::cout << std::endl << std::endl << "Fixed width integer types: \nTYPE(SIZE): ALIGNMENT\n--------------------" << std::endl;
     TYPE_OUTPUT(int8_t);
     TYPE_OUTPUT(int16_t);
     TYPE_OUTPUT(int32_t);
@@ -143,7 +143,7 @@ int main(int argc, char const* argv[])
 
 #if 0
 #include <stdfloat>
-    std::cout << std::endl << std::endl << "Fixed width floating-point types: \nTYPE(SIZE): ALIGNMENT\n----------" << std::endl;
+    std::cout << std::endl << std::endl << "Fixed width floating-point types: \nTYPE(SIZE): ALIGNMENT\n--------------------" << std::endl;
     TYPE_OUTPUT(std::float16_t);
     TYPE_OUTPUT(std::float32_t);
     TYPE_OUTPUT(std::float64_t);
@@ -151,7 +151,7 @@ int main(int argc, char const* argv[])
     TYPE_OUTPUT(std::bfloat16_t);
 #endif
 
-    std::cout << std::endl << std::endl << "Other types: \nTYPE(SIZE): ALIGNMENT\n----------" << std::endl;
+    std::cout << std::endl << std::endl << "Other types: \nTYPE(SIZE): ALIGNMENT\n--------------------" << std::endl;
     TYPE_OUTPUT(size_t);
     TYPE_OUTPUT(bool);
     TYPE_OUTPUT(int);
@@ -167,7 +167,7 @@ int main(int argc, char const* argv[])
     TYPE_OUTPUT(nullptr_t);
     TYPE_OUTPUT(max_align_t);
 
-    std::cout << std::endl << std::endl << "Example struct:\nTYPE(SIZE, ALIGNMENT)\n----------" << std::endl;
+    std::cout << std::endl << std::endl << "Example struct:\nTYPE(SIZE, ALIGNMENT)\n--------------------" << std::endl;
     Utils::dump<TYPE_0>();
     Utils::dump<TYPE_A>();
     Utils::dump<TYPE_B>();
