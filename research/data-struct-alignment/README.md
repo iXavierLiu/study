@@ -41,9 +41,16 @@ Other types:
 TYPE(SIZE): ALIGNMENT
 ----------
 size_t(8): 8
-size_t(8): 8
-size_t(8): 8
-size_t(8): 8
+bool(1): 1
+int(4): 4
+short(2): 2
+long(8): 8
+long long(8): 8
+float(4): 4
+double(8): 8
+long double(8): 8
+char(1): 1
+wchar_t(4): 4
 ptrdiff_t(8): 8
 nullptr_t(8): 8
 max_align_t(8): 8
@@ -126,7 +133,6 @@ TYPE(SIZE, ALIGNMENT)
 0x00000016 |* * * * * * * *| double(8, 8) 
            +-+-+-+-+-+-+-+-+
 
-
 ```
 
 ## windows
@@ -172,9 +178,16 @@ Other types:
 TYPE(SIZE): ALIGNMENT
 ----------
 size_t(8): 8
-size_t(8): 8
-size_t(8): 8
-size_t(8): 8
+bool(1): 1
+int(4): 4
+short(2): 2
+long(4): 4
+long long(8): 8
+float(4): 4
+double(8): 8
+long double(8): 8
+char(1): 1
+wchar_t(2): 2
 ptrdiff_t(8): 8
 nullptr_t(8): 1
 max_align_t(8): 8
