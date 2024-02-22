@@ -14,6 +14,7 @@ endif()
 
 add_subdirectory("practices")
 add_subdirectory("research")
+add_subdirectory("demo")
 
 #set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 #set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
