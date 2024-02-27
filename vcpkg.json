@@ -1,0 +1,7 @@
+{
+  "dependencies": [
+    "gtest",
+    "boost-pfr",
+    "boost-type-index"
+  ]
+}
