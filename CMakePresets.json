@@ -12,6 +12,7 @@
     },
     {
       "name": "osx",
+      "hidden": true,
       "inherits": [
         "default"
       ],
@@ -23,6 +24,7 @@
     },
     {
       "name": "osx-gcc",
+      "hidden": true,
       "inherits": [
         "osx"
       ],
@@ -33,6 +35,7 @@
     },
     {
       "name": "win",
+      "hidden": true,
       "inherits": [
         "default"
       ],
