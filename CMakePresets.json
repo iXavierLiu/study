@@ -22,6 +22,16 @@
       }
     },
     {
+      "name": "osx-gcc",
+      "inherits": [
+        "osx"
+      ],
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "/opt/homebrew/bin/gcc-13",
+        "CMAKE_CXX_COMPILER": "/opt/homebrew/bin/g++-13"
+      }
+    },
+    {
       "name": "win",
       "inherits": [
         "default"
