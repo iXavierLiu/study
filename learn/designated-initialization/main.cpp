@@ -16,13 +16,13 @@ struct S
 
 int main(int argc, char const *argv[])
 {
-    S s1 = { .stringValue = std::string(6, 's'), .doubleValue = 3.14, .intValue = 100 };
+    S s1 = { .intValue = 100, .stringValue = std::string(6, 's'), .doubleValue = 3.14 };
     s1.print();
 
     S s2 = { .stringValue = "fffff" };
     s2.print();
 
-    int a[3]{ [1] = 99 };
+    int a[3]{ [0] = 1, [1] = 11, [2] = 22 };
     for (auto &&i : a)
     {
         std::cout << i << " ";
