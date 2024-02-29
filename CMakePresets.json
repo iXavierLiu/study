@@ -29,8 +29,8 @@
         "osx"
       ],
       "cacheVariables": {
-        "CMAKE_C_COMPILER": "/opt/homebrew/bin/gcc-13",
-        "CMAKE_CXX_COMPILER": "/opt/homebrew/bin/g++-13"
+        "CMAKE_C_COMPILER": "$env{CC}",
+        "CMAKE_CXX_COMPILER": "$env{CXX}"
       }
     },
     {
