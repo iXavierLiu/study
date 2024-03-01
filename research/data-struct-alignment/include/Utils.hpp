@@ -1,7 +1,7 @@
 #pragma once
+#include <algorithm>
 #include <boost/pfr.hpp>
 #include <boost/type_index.hpp>
-#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -28,16 +28,16 @@ private:
 
     static void _dump_left()
     {
-        std::cout << "  " << std::setw(size_pointer + 1) << "";
+        std::cout << std::setw(size_pointer + 4) << "";
     }
 
     static void _dump_left(size_t p)
     {
-        std::cout << "0x" << std::setw(size_pointer) << std::setfill('0') << p << std::setfill(' ') << " ";
+        std::cout << std::setw(size_pointer) << std::setfill('0') << p << "(D)" << std::setfill(' ') << " ";
     }
 };
 
-size_t Utils::size_pointer = sizeof(void*);
+size_t Utils::size_pointer = 6;
 
 template <typename T>
 void Utils::dump()

@@ -9,5 +9,14 @@
         "editor.detectIndentation": false,
         "editor.insertSpaces": true,
         "editor.tabSize": 2
-    }
+    },
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/CMakePresets.json",
+                "/CMakeUserPresets.json"
+            ],
+            "url": "https://gist.github.com/iXavierLiu/87688fccd31a96b85b7e98a305b0a9f5/raw/26190324b0454701d3c3157eaa8b5d1d8d2e0ab0/CMakePresets.schema.json"
+        }
+    ]
 }

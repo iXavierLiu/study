@@ -11,6 +11,19 @@
       }
     },
     {
+      "name": "osx-gcc-local",
+      "inherits": [
+        "osx-gcc"
+      ],
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      },
+      "environment": {
+        "CC": "/PATH-TO-GCC",
+        "CXX": "/PATH-TO-G++"
+      }
+    },
+    {
       "name": "win-local",
       "inherits": [
         "win"

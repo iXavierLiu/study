@@ -1,0 +1,4 @@
+_setup_project_env("demo")
+project(${_PROJECT_NAME} LANGUAGES CXX)
+
+add_subdirectory("coroutine")
