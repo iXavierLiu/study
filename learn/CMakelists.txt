@@ -2,3 +2,8 @@ _setup_project_env("learn")
 project(${_PROJECT_NAME} LANGUAGES CXX)
 
 add_subdirectory("designated-initialization")
+
+# only msvc support c++20 module, gcc needed version 14 at least(13.2 awalable as so far)
+if(MSVC)
+	add_subdirectory("module")
+endif()
