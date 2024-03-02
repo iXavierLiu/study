@@ -9,5 +9,3 @@ target_include_directories(${PROJECT_NAME} PUBLIC "include")
 
 # set symbols exports flag; removing this line may work, but there will be a warning
 target_compile_definitions(${PROJECT_NAME} PRIVATE LIB_SUB_EXPORTS)
-
-install(TARGETS ${PROJECT_NAME})

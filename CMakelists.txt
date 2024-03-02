@@ -12,6 +12,12 @@ elseif (APPLE)
     set(CMAKE_INSTALL_RPATH "@loader_path/../lib")
 endif()
 
+# set utf-8 flag on msvc compiler
+add_compile_options(
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
+)
+
 add_subdirectory("practices")
 add_subdirectory("research")
 add_subdirectory("demo")
@@ -19,9 +25,3 @@ add_subdirectory("learn")
 
 #set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 #set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
-
-# set utf-8 flag on msvc compiler
-add_compile_options(
-    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
-    "$<$<C_COMPILER_ID:MSVC>:/utf-8>"
-)

@@ -16,5 +16,3 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 # set symbols exports flag
 target_compile_definitions(${PROJECT_NAME} PRIVATE DLL_PARENT_EXPORTS)
-
-install(TARGETS ${PROJECT_NAME})

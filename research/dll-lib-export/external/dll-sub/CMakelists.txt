@@ -16,5 +16,3 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 # set symbols exports flag
 target_compile_definitions(${PROJECT_NAME} PRIVATE LIB_SUB_EXPORTS)
-
-install(TARGETS ${PROJECT_NAME})
