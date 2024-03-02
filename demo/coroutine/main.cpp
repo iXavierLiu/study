@@ -42,6 +42,8 @@ public:
                 return {};
             }
 
+            void return_void() noexcept {}
+
             void unhandled_exception() {}
 
             size_t value{};
