@@ -2,18 +2,18 @@
   "version": 2,
   "configurePresets": [
     {
-      "name": "osx-local",
+      "name": "osx",
       "inherits": [
-        "osx"
+        "osx-default"
       ],
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
       }
     },
     {
-      "name": "osx-gcc-local",
+      "name": "osx-gcc",
       "inherits": [
-        "osx-gcc"
+        "osx-gcc-default"
       ],
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
@@ -24,9 +24,19 @@
       }
     },
     {
-      "name": "win-local",
+      "name": "win",
       "inherits": [
-        "win"
+        "win-default"
+      ],
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "win-vscode",
+      "generator": "Visual Studio 17 2022",
+      "inherits": [
+        "win-default"
       ],
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "/PATH-TO/vcpkg/scripts/buildsystems/vcpkg.cmake"

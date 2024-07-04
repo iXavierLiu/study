@@ -11,7 +11,7 @@
       }
     },
     {
-      "name": "osx",
+      "name": "osx-default",
       "hidden": true,
       "inherits": [
         "default"
@@ -23,10 +23,10 @@
       }
     },
     {
-      "name": "osx-gcc",
+      "name": "osx-gcc-default",
       "hidden": true,
       "inherits": [
-        "osx"
+        "osx-default"
       ],
       "cacheVariables": {
         "CMAKE_C_COMPILER": "$env{CC}",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "name": "win",
+      "name": "win-default",
       "hidden": true,
       "inherits": [
         "default"
